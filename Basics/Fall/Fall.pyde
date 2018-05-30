@@ -2,13 +2,16 @@
 
 import Ball
 """
-   ISSUES: despite that all the balls had different initial values for velocity and position
-           they are spawned in the same position with the same velocity
+   [ISSUES]: Despite that all the balls had different initial values for velocity and position
+            they are spawned in the same position with the same velocity
+   [FIXED]: The problem was in the constructor of the class Ball
+            The parameters with the type 'PVector' must be assgined to the
+            class variables with the function '.get()'
 """
 
 # Environment Setup
 balls = []
-N = 4
+N = 10
 def setup():
   size(800, 800)
   
@@ -19,6 +22,7 @@ def setup():
     balls += [Ball.Ball(id = i,startPos = PVector(random(200, width), random(200,height)) ,radius = random(15, 50), turnRate = random(1,2))]
     print(balls[i].turnRate)
     
+    # Send them to random directions
     force = PVector(random(-30,30), random(-30,30))
     force.normalize()
     force.mult(i * ((-1)**i))

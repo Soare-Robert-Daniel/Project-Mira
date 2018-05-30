@@ -6,9 +6,9 @@ class Ball(object):
     def __init__(self,id = -1, startPos = PVector(300,300), radius = 10, velocity = PVector(0,0), acceleration = PVector(0,0), mass = 1, color = [255, 255, 255], turnRate = 0.5):
         self.id = id
         self.radius = radius
-        self.pos = startPos     # position
-        self.vel = velocity     # velocity
-        self.acc = acceleration # acceleration
+        self.pos = startPos.get()     # position
+        self.vel = velocity.get()     # velocity
+        self.acc = acceleration.get() # acceleration
         self.mass = mass        # mass
         self.dir = self.pos.normalize()
         self.force = self.mass * self.acc
