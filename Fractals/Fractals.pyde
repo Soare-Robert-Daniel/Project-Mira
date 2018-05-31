@@ -1,7 +1,7 @@
 # Fractals Basics
 import Circle
 import KochCurve
-
+import Trees
 
 KochLines = []
 
@@ -20,6 +20,7 @@ def draw():
     # KochCurve.TestRotate()
     # for i in KochLines:
     #     i.display()
+    Trees.Tree(x = width/2, y = height, l = 200, _angle = PI/4, _color = [0, 0, 0])
         
 def mousePressed():
     # global KochLines
