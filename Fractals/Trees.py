@@ -5,9 +5,10 @@ proportion = 0.5
 branch_color = [0, 0, 0]
 startBranch = 0
 angle = 0.785
+maxNrBranch = 0
 
 def Tree(x, y, l = 300, _angle = PI/4, _minLenght = 5, _proportion = 0.6, _color = [200, 150, 50], _startBranch = 0): # (start x, start y, initial lenght, the minimum lenght of branch,the proportion of each subsequent branch,color of the branch, from what branch we need to begin to color )
-    global minLenght, proportion, branch_color, startBranch, angle
+    global minLenght, proportion, branch_color, startBranch, angle, maxNrBranch
     minLenght = _minLenght
     proportion = _proportion
     branch_color = _color
@@ -22,7 +23,8 @@ def Tree(x, y, l = 300, _angle = PI/4, _minLenght = 5, _proportion = 0.6, _color
         Stop condition:
             x(n) < limit => proportion^(n) * l < limit => n < log(limit/l) with base 'proportion' and then we ceil the result (we can not have 5 branch and half)
     """
-    print("The maximum number of branches that can be generated with the current settings is", math.ceil(math.log(minLenght * 1.0/l, proportion)) + 1) # (additional branches) + base branch
+    maxNrBranch = math.ceil(math.log(minLenght * 1.0/l, proportion)) + 1 # (additional branches) + base branch
+    print("The maximum number of branches that can be generated with the current settings is", maxNrBranch) 
     
     translate(x, y)
     branch(l, 0)
@@ -31,9 +33,19 @@ def Tree(x, y, l = 300, _angle = PI/4, _minLenght = 5, _proportion = 0.6, _color
 def branch(l, level): # length of the branch
     
     # Color settings
-    _red = branch_color[0]
-    _green = branch_color[1] + max(150 ,255 - l)
-    _blue = branch_color[2]
+    _red = 0
+    _green = 0
+    _blue = 0
+    
+    if(maxNrBranch - level <= 3):
+        _red = branch_color[0]
+     
+    _green = branch_color[1] + max(100 ,200 - l)
+    
+    if(maxNrBranch - level > 3):
+        _blue = branch_color[2]
+    
+    
     
     stroke(_red, _green, _blue)
     
