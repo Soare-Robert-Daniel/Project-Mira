@@ -6,7 +6,7 @@ theList = []
 nrLimit = 2000
 
 def setup():
-    size(400, 250)
+    size(1000, 250)
     frameRate(30)
 
     # Load a black-white image
@@ -14,7 +14,8 @@ def setup():
     # img = loadImage("2018.png")
     # img = loadImage("costi.png")
     # img = loadImage("invinctus.png")
-    img = loadImage("ivy.png")
+    # img = loadImage("ivy.png")
+    img = loadImage("restanta.png")
     img.loadPixels()
     
     # Take the position of the white pixels
